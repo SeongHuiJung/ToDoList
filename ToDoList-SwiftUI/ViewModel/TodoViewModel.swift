@@ -29,4 +29,14 @@ class TodoViewModel: ObservableObject {
             }
         }
     }
+    
+    // ToDo 삭제 함수
+    func deleteToDo(id: UUID) {
+        for i in 0..<allToDoData.count {
+            if allToDoData[i].id == id {
+                allToDoData.remove(at: i)
+                return
+            }
+        }
+    }
 }
