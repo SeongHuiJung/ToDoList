@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TodoRow: View {
-    @Binding var todo: TodoInfoModel
+    var todo: TodoInfoModel
     
     var body: some View {
         HStack {

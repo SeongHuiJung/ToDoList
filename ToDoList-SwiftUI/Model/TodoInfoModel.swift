@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct TodoInfoModel {
+struct TodoInfoModel: Identifiable {
+    let id: UUID = UUID()
     var title: String
-    var id: Int
     var isCompleted: Bool
 }
