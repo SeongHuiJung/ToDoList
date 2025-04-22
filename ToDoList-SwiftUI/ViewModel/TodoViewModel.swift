@@ -19,4 +19,14 @@ class TodoViewModel: ObservableObject {
     func addToDo(text: String) {
         allToDoData.append(TodoInfoModel(title: text))
     }
+    
+    // ToDo 완료/완료해제 함수
+    func onOffToDo(id: UUID) {
+        for i in 0..<allToDoData.count {
+            if allToDoData[i].id == id {
+                allToDoData[i].isCompleted = !allToDoData[i].isCompleted
+                return
+            }
+        }
+    }
 }
