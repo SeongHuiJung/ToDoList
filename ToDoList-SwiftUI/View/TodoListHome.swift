@@ -36,6 +36,14 @@ struct TodoListHome: View {
                                 } label: {
                                     TodoRow(todo: data)
                                 }
+                                .swipeActions {
+                                    Button {
+                                        viewModel.deleteToDo(id: data.id)
+                                    } label: {
+                                        Label("Delete", systemImage: "trash.circle")
+                                            .tint(Color.red)
+                                    }
+                                }
                             }
                         }
                     }
