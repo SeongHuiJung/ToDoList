@@ -10,10 +10,10 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TodoListHome()
-            .background(Color(UIColor.systemGroupedBackground))
     }
 }
 
 #Preview {
     ContentView()
+        .environmentObject(TodoViewModel())
 }
