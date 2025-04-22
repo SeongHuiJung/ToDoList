@@ -10,14 +10,13 @@ import Foundation
 class TodoViewModel: ObservableObject {
     @Published private var allToDoData: [TodoInfoModel] = []
     
-    @Published var name: String?
-    
+    // get ToDo 데이터 
     var toDoData: [TodoInfoModel] {
-        return allToDoData
+        return allToDoData.reversed() // reversed 로 최신순 정렬
     }
     
-    func addToDo() {
-        allToDoData.append(TodoInfoModel(title: "test", isCompleted: false))
-        name = "test"
+    // ToDo 추가 함수
+    func addToDo(text: String) {
+        allToDoData.append(TodoInfoModel(title: text))
     }
 }

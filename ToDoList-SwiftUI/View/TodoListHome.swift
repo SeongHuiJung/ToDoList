@@ -8,46 +8,48 @@
 import SwiftUI
 
 struct TodoListHome: View {
-    @StateObject var viewModel = TodoViewModel()
-
+    @EnvironmentObject var viewModel: TodoViewModel
+    
     var body: some View {
-        ZStack {
-            Color(UIColor.systemGroupedBackground)
-                .ignoresSafeArea()
-
-            VStack {
+        NavigationView {
+            ZStack {
+                Color(UIColor.systemGroupedBackground)
+                    .ignoresSafeArea()
+                
                 VStack {
-                    Text("To Do List")
-                        .bold()
-                        .font(.title)
-                }
-                .padding()
-                
-                Spacer()
-                
-                if viewModel.toDoData.isEmpty {
-                    Text("할 일을 추가해 주세요!")
-                } else {
-                    List {
-                        ForEach(viewModel.toDoData) { data in
-                            TodoRow(todo: data)
+                    VStack {
+                        Text("To Do List")
+                            .bold()
+                            .font(.title)
+                    }
+                    .padding()
+                    
+                    Spacer()
+                    
+                    if viewModel.toDoData.isEmpty {
+                        Text("할 일을 추가해 주세요!")
+                    } else {
+                        List {
+                            ForEach(viewModel.toDoData) { data in
+                                TodoRow(todo: data)
+                            }
                         }
                     }
+                    
+                    Spacer()
+                    
+                    NavigationLink(destination: AddTodo()) {
+                        Text("할 일 추가")
+                    }
+                    .padding(.bottom, 20)
+                    .padding(.top, 20)
                 }
-                
-                Spacer()
-                
-                Button("할 일 추가") {
-                    viewModel.addToDo()
-                }
-                .padding(.bottom, 20)
-                .padding(.top, 20)
             }
         }
     }
 }
 
-
 #Preview {
     TodoListHome()
+        .environmentObject(TodoViewModel())
 }
