@@ -31,7 +31,11 @@ struct TodoListHome: View {
                     } else {
                         List {
                             ForEach(viewModel.toDoData) { data in
-                                TodoRow(todo: data)
+                                Button {
+                                    viewModel.onOffToDo(id: data.id)
+                                } label: {
+                                    TodoRow(todo: data)
+                                }
                             }
                         }
                     }
