@@ -13,7 +13,7 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
-        .environmentObject(TodoViewModel())
-}
+//#Preview {
+//    ContentView()
+//        .environmentObject(TodoViewModel(context: <#ModelContext#>))
+//}

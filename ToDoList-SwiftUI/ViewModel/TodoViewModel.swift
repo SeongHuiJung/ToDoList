@@ -6,18 +6,47 @@
 //
 
 import Foundation
+import SwiftUICore
+import SwiftData
 
 class TodoViewModel: ObservableObject {
+    private let modelContext: ModelContext
     @Published private var allToDoData: [TodoInfoModel] = []
     
-    // get ToDo 데이터 
-    var toDoData: [TodoInfoModel] {
-        return allToDoData.reversed() // reversed 로 최신순 정렬
+    init(context: ModelContext) {
+        self.modelContext = context
+        setAllToDoData()
+    }
+
+    var sortedTodo: [TodoInfoModel] {
+        do {
+            var todoData = try modelContext.fetch(FetchDescriptor<TodoInfoModel>())
+            todoData.sort { $0.registerTime < $1.registerTime }
+            return todoData
+        } catch {
+            print("TodoInfoModel 데이터를 찾을 수 없습니다.")
+            return []
+        }
+    }
+    
+    // 앱 실행시 한번 실행
+    // @Published allToDoData 에 SwiftData 를 fetch
+    func setAllToDoData() {
+        do {
+            let todoData = try modelContext.fetch(FetchDescriptor<TodoInfoModel>())
+            
+            allToDoData = todoData
+            allToDoData.sort { $0.registerTime < $1.registerTime }
+        } catch {
+            print("TodoInfoModel 데이터를 찾을 수 없습니다.")
+        }
     }
     
     // ToDo 추가 함수
     func addToDo(text: String) {
-        allToDoData.append(TodoInfoModel(title: text))
+        let newTodo = TodoInfoModel(title: text)
+        modelContext.insert(newTodo)
+        allToDoData.append(newTodo)
     }
     
     // ToDo 완료/완료해제 함수
@@ -34,6 +63,8 @@ class TodoViewModel: ObservableObject {
     func deleteToDo(id: UUID) {
         for i in 0..<allToDoData.count {
             if allToDoData[i].id == id {
+                let deleteData = allToDoData[i]
+                modelContext.delete(deleteData)
                 allToDoData.remove(at: i)
                 return
             }
