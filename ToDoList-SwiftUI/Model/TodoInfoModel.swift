@@ -6,10 +6,16 @@
 //
 
 import Foundation
+import SwiftData
 
-struct TodoInfoModel: Identifiable {
-    let id: UUID = UUID()
+@Model
+class TodoInfoModel: Identifiable {
     var title: String
+    @Attribute(.unique) var id: UUID = UUID()
     var isCompleted: Bool = false
     var registerTime: Date = Date()
+    
+    init(title: String) {
+        self.title = title
+    }
 }
