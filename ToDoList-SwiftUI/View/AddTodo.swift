@@ -10,8 +10,16 @@ import SwiftUI
 struct AddTodo: View {
     @State private var text: String = ""
     @EnvironmentObject var viewModel: TodoViewModel
+    @FocusState private var isTextFieldFocused: Bool
+    
     var body: some View {
         ZStack (alignment: .bottom) {
+            Color(UIColor.systemBackground)
+                .ignoresSafeArea()
+                .onTapGesture {
+                    isTextFieldFocused = false
+                }
+            
             VStack {
                 Text("할 일 생성")
                     .bold()
@@ -27,24 +35,26 @@ struct AddTodo: View {
                 .padding()
                 .background(Color(UIColor.systemGroupedBackground))
                 .cornerRadius(25)
+                .focused($isTextFieldFocused)
                 
                 Spacer(minLength: 100)
             }
             .padding()
             
-            Button("저장하기") {
+            Button {
                 viewModel.addToDo(text: text)
+            } label: {
+                Text("저장하기")
+                    .font(.system(size: 18))
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color(red: 109/255, green: 133/255, blue: 255/255))
+                    .cornerRadius(12)
             }
-            .font(.system(size: 18))
-            .fontWeight(.bold)
-            .foregroundColor(.white)
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background(Color(red: 109/255, green: 133/255, blue: 255/255))
-            .cornerRadius(12)
             .padding()
             .padding(.bottom, 10)
-            
         }
     }
 }
