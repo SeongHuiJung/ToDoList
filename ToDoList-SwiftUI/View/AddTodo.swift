@@ -10,8 +10,16 @@ import SwiftUI
 struct AddTodo: View {
     @State private var text: String = ""
     @EnvironmentObject var viewModel: TodoViewModel
+    @FocusState private var isTextFieldFocused: Bool
+    
     var body: some View {
         ZStack (alignment: .bottom) {
+            Color(UIColor.systemBackground)
+                .ignoresSafeArea()
+                .onTapGesture {
+                    isTextFieldFocused = false
+                }
+            
             VStack {
                 Text("할 일 생성")
                     .bold()
@@ -27,6 +35,7 @@ struct AddTodo: View {
                 .padding()
                 .background(Color(UIColor.systemGroupedBackground))
                 .cornerRadius(25)
+                .focused($isTextFieldFocused)
                 
                 Spacer(minLength: 100)
             }
