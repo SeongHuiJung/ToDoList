@@ -32,19 +32,20 @@ struct AddTodo: View {
             }
             .padding()
             
-            Button("저장하기") {
+            Button {
                 viewModel.addToDo(text: text)
+            } label: {
+                Text("저장하기")
+                    .font(.system(size: 18))
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color(red: 109/255, green: 133/255, blue: 255/255))
+                    .cornerRadius(12)
             }
-            .font(.system(size: 18))
-            .fontWeight(.bold)
-            .foregroundColor(.white)
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background(Color(red: 109/255, green: 133/255, blue: 255/255))
-            .cornerRadius(12)
             .padding()
             .padding(.bottom, 10)
-            
         }
     }
 }
