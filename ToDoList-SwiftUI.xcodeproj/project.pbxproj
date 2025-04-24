@@ -6,8 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		57734A862DB927E300AF5F27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5702FBEB2DACBFF30093A47C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5702FBF22DACBFF30093A47C;
+			remoteInfo = "ToDoList-SwiftUI";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		5702FBF32DACBFF30093A47C /* ToDoList-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ToDoList-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		57734A822DB927E300AF5F27 /* ToDoList-SwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ToDoList-SwiftUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -16,10 +27,22 @@
 			path = "ToDoList-SwiftUI";
 			sourceTree = "<group>";
 		};
+		57734A832DB927E300AF5F27 /* ToDoList-SwiftUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "ToDoList-SwiftUITests";
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		5702FBF02DACBFF30093A47C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		57734A7F2DB927E300AF5F27 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				5702FBF52DACBFF30093A47C /* ToDoList-SwiftUI */,
+				57734A832DB927E300AF5F27 /* ToDoList-SwiftUITests */,
 				5702FBF42DACBFF30093A47C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				5702FBF32DACBFF30093A47C /* ToDoList-SwiftUI.app */,
+				57734A822DB927E300AF5F27 /* ToDoList-SwiftUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +95,29 @@
 			productReference = 5702FBF32DACBFF30093A47C /* ToDoList-SwiftUI.app */;
 			productType = "com.apple.product-type.application";
 		};
+		57734A812DB927E300AF5F27 /* ToDoList-SwiftUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 57734A8A2DB927E300AF5F27 /* Build configuration list for PBXNativeTarget "ToDoList-SwiftUITests" */;
+			buildPhases = (
+				57734A7E2DB927E300AF5F27 /* Sources */,
+				57734A7F2DB927E300AF5F27 /* Frameworks */,
+				57734A802DB927E300AF5F27 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				57734A872DB927E300AF5F27 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				57734A832DB927E300AF5F27 /* ToDoList-SwiftUITests */,
+			);
+			name = "ToDoList-SwiftUITests";
+			packageProductDependencies = (
+			);
+			productName = "ToDoList-SwiftUITests";
+			productReference = 57734A822DB927E300AF5F27 /* ToDoList-SwiftUITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -82,6 +130,10 @@
 				TargetAttributes = {
 					5702FBF22DACBFF30093A47C = {
 						CreatedOnToolsVersion = 16.1;
+					};
+					57734A812DB927E300AF5F27 = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = 5702FBF22DACBFF30093A47C;
 					};
 				};
 			};
@@ -100,12 +152,20 @@
 			projectRoot = "";
 			targets = (
 				5702FBF22DACBFF30093A47C /* ToDoList-SwiftUI */,
+				57734A812DB927E300AF5F27 /* ToDoList-SwiftUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		5702FBF12DACBFF30093A47C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		57734A802DB927E300AF5F27 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +182,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		57734A7E2DB927E300AF5F27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		57734A872DB927E300AF5F27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5702FBF22DACBFF30093A47C /* ToDoList-SwiftUI */;
+			targetProxy = 57734A862DB927E300AF5F27 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		5702FBFF2DACBFF40093A47C /* Debug */ = {
@@ -312,6 +387,52 @@
 			};
 			name = Release;
 		};
+		57734A882DB927E300AF5F27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CX8QXFQAMZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jaySeong.ToDoList-SwiftUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ToDoList-SwiftUI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ToDoList-SwiftUI";
+				XROS_DEPLOYMENT_TARGET = 2.1;
+			};
+			name = Debug;
+		};
+		57734A892DB927E300AF5F27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CX8QXFQAMZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jaySeong.ToDoList-SwiftUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ToDoList-SwiftUI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ToDoList-SwiftUI";
+				XROS_DEPLOYMENT_TARGET = 2.1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -329,6 +450,15 @@
 			buildConfigurations = (
 				5702FC022DACBFF40093A47C /* Debug */,
 				5702FC032DACBFF40093A47C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		57734A8A2DB927E300AF5F27 /* Build configuration list for PBXNativeTarget "ToDoList-SwiftUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				57734A882DB927E300AF5F27 /* Debug */,
+				57734A892DB927E300AF5F27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

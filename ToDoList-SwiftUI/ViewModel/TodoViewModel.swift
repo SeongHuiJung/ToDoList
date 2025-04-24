@@ -20,14 +20,7 @@ class TodoViewModel: ObservableObject {
 
     // view 에 표기할 todo 데이터
     var sortedTodo: [TodoInfoModel] {
-        do {
-            var todoData = try modelContext.fetch(FetchDescriptor<TodoInfoModel>())
-            todoData.sort { $0.registerTime > $1.registerTime }
-            return todoData
-        } catch {
-            print("TodoInfoModel 데이터를 찾을 수 없습니다.")
-            return []
-        }
+        return allToDoData.sorted { $0.registerTime > $1.registerTime }
     }
     
     // 앱 실행시 한번 실행
