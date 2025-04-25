@@ -28,7 +28,6 @@ final class ToDoList_SwiftUITests: XCTestCase {
             let todo2 = TodoInfoModel(title: "더미 데이터2")
             modelContext.insert(todo1)
             modelContext.insert(todo2)
-            // in-memory 컨테이너라 save 불필요
         }
         viewModel = await MainActor.run { TodoViewModel(context: modelContext) }
     }
@@ -50,7 +49,7 @@ final class ToDoList_SwiftUITests: XCTestCase {
     }
     
     // SwiftData 영속화 검증
-    // SwiftData 에 저장한 더미데이터 2개가 sortedTodo 에 잘 fetch 되었는지 확인
+    // SwiftData 에 저장한 더미데이터 2개가 toDoData 에 잘 fetch 되었는지 확인
     func test_setAllToDoData() {
         let todoDummyData = viewModel.toDoData
         XCTAssertEqual(todoDummyData.count, 2, "삽입된 더미 데이터가 fetch되지 않았습니다.")
