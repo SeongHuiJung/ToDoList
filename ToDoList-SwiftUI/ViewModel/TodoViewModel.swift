@@ -20,7 +20,7 @@ class TodoViewModel: ObservableObject {
     
     // 앱 실행시 한번 실행
     // @Published toDoData 에 SwiftData 를 fetch
-    func fetchToDoData() {
+    private func fetchToDoData() {
         do {
             let todoData = try modelContext.fetch(FetchDescriptor<TodoInfoModel>())
             
@@ -40,23 +40,25 @@ class TodoViewModel: ObservableObject {
     
     // ToDo 완료/완료해제 함수
     func onOffToDo(id: UUID) {
-        for i in 0..<toDoData.count {
-            if toDoData[i].id == id {
-                toDoData[i].isCompleted = !toDoData[i].isCompleted
-                return
-            }
-        }
+        let idx = findIndex(list: toDoData, id: id)
+        
+        toDoData[idx].isCompleted = !toDoData[idx].isCompleted
+        return
     }
     
     // ToDo 삭제 함수
     func deleteToDo(id: UUID) {
-        for i in 0..<toDoData.count {
-            if toDoData[i].id == id {
-                let deleteData = toDoData[i]
-                modelContext.delete(deleteData)
-                toDoData.remove(at: i)
-                return
-            }
-        }
+        let idx = findIndex(list: toDoData, id: id)
+        
+        let deleteData = toDoData[idx]
+        modelContext.delete(deleteData)
+        toDoData.remove(at: idx)
+        return
+    }
+    
+    // 원하는 UUID를 가진 index를 찾는 함수
+    private func findIndex(list: [TodoInfoModel], id: UUID) -> Int {
+        guard let idx = list.firstIndex(where: { $0.id == id }) else { return 0 }
+        return idx
     }
 }
