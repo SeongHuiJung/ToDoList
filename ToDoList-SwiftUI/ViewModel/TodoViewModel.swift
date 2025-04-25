@@ -35,6 +35,7 @@ class TodoViewModel: ObservableObject {
     func addToDo(text: String) {
         let newTodo = TodoInfoModel(title: text)
         modelContext.insert(newTodo)
+        //toDoData.append(newTodo)
         toDoData.insert(newTodo, at: 0)
     }
     
