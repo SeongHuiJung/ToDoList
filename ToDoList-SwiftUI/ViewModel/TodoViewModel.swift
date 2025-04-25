@@ -15,12 +15,12 @@ class TodoViewModel: ObservableObject {
     
     init(context: ModelContext) {
         self.modelContext = context
-        setAllToDoData()
+        fetchToDoData()
     }
     
     // 앱 실행시 한번 실행
     // @Published toDoData 에 SwiftData 를 fetch
-    func setAllToDoData() {
+    func fetchToDoData() {
         do {
             let todoData = try modelContext.fetch(FetchDescriptor<TodoInfoModel>())
             

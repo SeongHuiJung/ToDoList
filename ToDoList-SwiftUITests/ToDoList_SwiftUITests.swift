@@ -50,7 +50,7 @@ final class ToDoList_SwiftUITests: XCTestCase {
     
     // SwiftData 영속화 검증
     // SwiftData 에 저장한 더미데이터 2개가 toDoData 에 잘 fetch 되었는지 확인
-    func test_setAllToDoData() {
+    func test_fetchToDoData() {
         let todoDummyData = viewModel.toDoData
         XCTAssertEqual(todoDummyData.count, 2, "삽입된 더미 데이터가 fetch되지 않았습니다.")
         
