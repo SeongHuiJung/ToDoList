@@ -11,7 +11,7 @@ import SwiftData
 
 class TodoViewModel: ObservableObject {
     private let modelContext: ModelContext
-    @Published private var allToDoData: [TodoInfoModel] = []
+    @Published private var toDoData: [TodoInfoModel] = []
     
     init(context: ModelContext) {
         self.modelContext = context
@@ -20,17 +20,17 @@ class TodoViewModel: ObservableObject {
 
     // view 에 표기할 todo 데이터
     var sortedTodo: [TodoInfoModel] {
-        return allToDoData.sorted { $0.registerTime > $1.registerTime }
+        return toDoData.sorted { $0.registerTime > $1.registerTime }
     }
     
     // 앱 실행시 한번 실행
-    // @Published allToDoData 에 SwiftData 를 fetch
+    // @Published toDoData 에 SwiftData 를 fetch
     func setAllToDoData() {
         do {
             let todoData = try modelContext.fetch(FetchDescriptor<TodoInfoModel>())
             
-            allToDoData = todoData
-            allToDoData.sort { $0.registerTime > $1.registerTime }
+            toDoData = todoData
+            toDoData.sort { $0.registerTime > $1.registerTime }
         } catch {
             print("TodoInfoModel 데이터를 찾을 수 없습니다.")
         }
@@ -40,14 +40,14 @@ class TodoViewModel: ObservableObject {
     func addToDo(text: String) {
         let newTodo = TodoInfoModel(title: text)
         modelContext.insert(newTodo)
-        allToDoData.append(newTodo)
+        toDoData.append(newTodo)
     }
     
     // ToDo 완료/완료해제 함수
     func onOffToDo(id: UUID) {
-        for i in 0..<allToDoData.count {
-            if allToDoData[i].id == id {
-                allToDoData[i].isCompleted = !allToDoData[i].isCompleted
+        for i in 0..<toDoData.count {
+            if toDoData[i].id == id {
+                toDoData[i].isCompleted = !toDoData[i].isCompleted
                 return
             }
         }
@@ -55,11 +55,11 @@ class TodoViewModel: ObservableObject {
     
     // ToDo 삭제 함수
     func deleteToDo(id: UUID) {
-        for i in 0..<allToDoData.count {
-            if allToDoData[i].id == id {
-                let deleteData = allToDoData[i]
+        for i in 0..<toDoData.count {
+            if toDoData[i].id == id {
+                let deleteData = toDoData[i]
                 modelContext.delete(deleteData)
-                allToDoData.remove(at: i)
+                toDoData.remove(at: i)
                 return
             }
         }
