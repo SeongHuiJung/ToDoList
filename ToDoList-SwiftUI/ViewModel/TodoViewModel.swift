@@ -11,16 +11,11 @@ import SwiftData
 
 class TodoViewModel: ObservableObject {
     private let modelContext: ModelContext
-    @Published private var toDoData: [TodoInfoModel] = []
+    @Published var toDoData: [TodoInfoModel] = [] // 화면에 표기할 todo 데이터
     
     init(context: ModelContext) {
         self.modelContext = context
         setAllToDoData()
-    }
-
-    // view 에 표기할 todo 데이터
-    var sortedTodo: [TodoInfoModel] {
-        return toDoData.sorted { $0.registerTime > $1.registerTime }
     }
     
     // 앱 실행시 한번 실행
@@ -40,7 +35,8 @@ class TodoViewModel: ObservableObject {
     func addToDo(text: String) {
         let newTodo = TodoInfoModel(title: text)
         modelContext.insert(newTodo)
-        toDoData.append(newTodo)
+        //toDoData.append(newTodo)
+        toDoData.insert(newTodo, at: 0)
     }
     
     // ToDo 완료/완료해제 함수

@@ -26,11 +26,11 @@ struct TodoListHome: View {
                     
                     Spacer()
                     
-                    if viewModel.sortedTodo.isEmpty {
+                    if viewModel.toDoData.isEmpty {
                         Text("할 일을 추가해 주세요!")
                     } else {
                         List {
-                            ForEach(viewModel.sortedTodo) { data in
+                            ForEach(viewModel.toDoData) { data in
                                 Button {
                                     viewModel.onOffToDo(id: data.id)
                                 } label: {
